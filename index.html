@@ -4,14 +4,49 @@
     <meta charset="utf-8">
     <title>Hello, World! • A-Frame</title>
     <meta name="description" content="Hello, World! • A-Frame">
-    <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+<script src="https://rawgit.com/spite/THREE.MeshLine/master/src/THREE.MeshLine.js"></script>
+<!--
+<script src="https://rawgit.com/aframevr/aframe/master/dist/aframe.js"></script>
+  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+-->
+    <script src="dan-utils.js"></script>
+    <script src="AframeComponent_meshline.js"></script>
+    <script src="AframeComponent_terrain.js"></script>
+
+<script src="mrioAsLines.js"></script>    
+
+    
   </head>
   <body>
     <a-scene>
+    <a-assets>
+      <a-mixin id="redline" meshline="lineWidth: 1; color: #E20049"></a-mixin>
+    </a-assets>
+    <!--
       <a-sphere position="0 1.25 -1" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cube position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1" color="#4CC3D9"></a-cube>
+      <a-box position="-1 0.5 1" rotation="0 45 0" width="1" height="1" depth="1" color="#4CC3D9"></a-cube>
       <a-cylinder position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
       <a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+-->
+      
+      <a-entity mixin="redline" meshline="lineWidth: 2; path: -2 -1 0, 0 -2 0, 2 -1 0"></a-entity> 
+      
+      <a-sphere opacity=".25" src="img/globeLinkProbabilities.png" material="side:double" side="double" radius="2"></a-sphere>
+
+<!--       
+      <a-entity position="0 0 0 " rotation="-90 180 0"  terrain="width:5; height:5; heightmap: img/ag_heightmap.png; texture: img/ag_colormap.png; zheight:0.5">
+        <a-animation attribute="scale"
+        dur="10000"
+        direction="alternate"
+        fill="forwards"
+        to="1 1 0"
+        repeat="indefinite"></a-animation>
+      </a-entity> 
+    -->
+      
+      
       <a-sky color="#ECECEC"></a-sky>
     </a-scene>
   </body>
