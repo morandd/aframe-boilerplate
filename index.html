@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Hello, World! • A-Frame</title>
-    <meta name="description" content="Hello, World! • A-Frame">
+    <meta name="description" content="Spatial Footprints">
   <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
   <script src="aframe-text-component.min.js"></script>
@@ -17,11 +17,25 @@
     <script src="AframeComponent_terrain.js"></script>
 
 <script src="mrioAsLines.js"></script>    
+<script>
+  function globeAnimBegin(){
+    console.log('globe animation begins');
+  }
+</script>
 
     
   </head>
   <body>
     <a-scene stats>
+    
+    <a-entity camera look-controls wasd-controls>
+      <a-entity cursor="fuse: true; maxDistance: 30; timeout: 500"
+                position="0 0 -5"
+                geometry="primitive: ring"
+                material="color: white; shader: flat">
+      </a-entity>
+    </a-entity>
+    
     <a-assets>
       <a-mixin id="redline" meshline="lineWidth: 1; color: #E20049"></a-mixin>
     </a-assets>
@@ -35,16 +49,20 @@
       
       
       <!-- EORA GLOBE THING -->
+      
       <a-sphere position="5 2 -1" opacity=".25" src="img/earth_lights_lrg.png" material="side:double" side="double" radius="2">
         <a-entity text="text: Trade & Transformation Steps" material="color: #333" position="0 2 0"></a-entity>
-        
       </a-sphere>
+      
+     <!-- Gaze button panel -->
+     <a-plane color="#C00"  rotation="0 -30 0"  position="15 1 -10" onclick="globeAnimBegin" height="20" width="20"></a-plane>
       
       <!-- SPATIAL MAP THING -->
         <a-entity text="text: Impacts associated with production" material="color: #333" position="-4 4 -2"></a-entity>
-      <a-entity position="-4 0 -2 " rotation="-90 170 0"  terrain="width:5; height:5; heightmap: img/ag_heightmap.png; texture: img/ag_colormap.png; zheight:0.5">
+      <a-entity position="-4 0 -2 " rotation="-90 38 0"  terrain="width:5; height:5; heightmap: img/ag_heightmap.png; texture: img/ag_colormap.png; zheight:0.5">
         <a-animation attribute="scale" dur="10000" direction="alternate" filll="forwards" to="1 1 0" repeat="indefinite"></a-animation>
       </a-entity> 
+     <a-plane color="#C00" position="-10 1 -10" rotation="0 30 0" height="20" width="20"></a-plane>
       
       
       <a-sky color="#ECECEC"></a-sky>
