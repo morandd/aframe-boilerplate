@@ -59,7 +59,6 @@ var MRIOLink = function(){
 }
 
 function go(){
-	console.log("------");
 	for (var i=0; i<nodes.length; i++) nodes[i] = new MRIONode();
 	for (var i=0; i<mlinks.length; i++) mlinks[i] = new MRIOLink();
 	

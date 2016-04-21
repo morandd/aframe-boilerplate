@@ -26,14 +26,15 @@
     
   </head>
   <body>
-    <a-scene stats>
+    <a-scene ><!-- add "stats" attribute to get FPS -->
     
-    <a-entity camera look-controls wasd-controls>
-      <a-entity cursor="fuse: true; maxDistance: 30; timeout: 500"
-                position="0 0 -5"
-                geometry="primitive: ring"
-                material="color: white; shader: flat">
-      </a-entity>
+    <a-entity camera id="#maincamera" look-controls wasd-controls>
+    <!-- cursor="fuse: true; maxDistance: 3; timeout: 500" -->
+      <a-entity cursor="maxDistance: 4;"
+                position="0 0 -0.5"
+                geometry="primitive: ring; radiusOuter: 0.030; radiusInner: 0.020;"
+                material="color: cyan; shader: flat">
+      </a-entity>      
     </a-entity>
     
     <a-assets>
@@ -50,19 +51,19 @@
       
       <!-- EORA GLOBE THING -->
       
-      <a-sphere position="5 2 -1" opacity=".25" src="img/earth_lights_lrg.png" material="side:double" side="double" radius="2">
-        <a-entity text="text: Trade & Transformation Steps" material="color: #333" position="0 2 0"></a-entity>
+      <a-sphere position="5 0 -1" opacity=".25" src="img/earth_lights_lrg.png" material="side:double" side="double" radius="2">
+        <a-entity  text="text: Trade & Transformation Steps" material="color: #333" position="0 2 0"></a-entity>
       </a-sphere>
       
-     <!-- Gaze button panel -->
-     <a-plane color="#C00"  rotation="0 -30 0"  position="15 1 -10" onclick="globeAnimBegin" height="20" width="20"></a-plane>
+     <!-- Gaze button panel  -->
+     <a-plane rotation="0 -30 0" color="#0C0"  opacity="0.5" material="visible:false" position="1 0 -0.5" onclick="globeAnimBegin()" height="1" width="1"></a-plane>
       
       <!-- SPATIAL MAP THING -->
         <a-entity text="text: Impacts associated with production" material="color: #333" position="-4 4 -2"></a-entity>
-      <a-entity position="-4 0 -2 " rotation="-90 38 0"  terrain="width:5; height:5; heightmap: img/ag_heightmap.png; texture: img/ag_colormap.png; zheight:0.5">
+      <a-entity position="-4 -2 -8 " rotation="-90 38 0"  terrain="width:5; height:5; heightmap: img/ag_heightmap.png; texture: img/ag_colormap.png; zheight:0.5">
         <a-animation attribute="scale" dur="10000" direction="alternate" filll="forwards" to="1 1 0" repeat="indefinite"></a-animation>
       </a-entity> 
-     <a-plane color="#C00" position="-10 1 -10" rotation="0 30 0" height="20" width="20"></a-plane>
+     <a-plane color="#C00" position="-8 1 -0.5" opacity="0.5" rotation="0 30 0" height="2" width="2"></a-plane>
       
       
       <a-sky color="#ECECEC"></a-sky>
